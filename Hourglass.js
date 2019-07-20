@@ -12,27 +12,29 @@
 // The specifications said that the array was a perfect square, but I have coded for it not to have to be.
 // Source: https://www.hackerrank.com/challenges/2d-array/problem
 
-arr = [[1,2,5,8],[7,1,3,4],[3,-3,4,2],[1,3,1,3],[2,-1,3,4]]
+// An array might look like this: [[1,2,5,8],[7,1,3,4],[3,-3,4,2],[1,3,1,3],[2,-1,3,4]]
 
 const biggestHourglass = (arr) => {
     const length = arr.length-1 
     const width = arr[0].length-1
-    let highest = 0
-    let biggest = [0,0]
-    
-    for (i = 1; i < length; i++) {
-        for (j = 1; j < width; j++) {
-            hourglass = 
-            arr[i-1][j-1]+arr[i-1][j]+arr[i-1][j+1]
-                         +arr[i][j]+
-            arr[i+1][j-1]+arr[i+1][j]+arr[i+1][j+1]
-                if (hourglass > highest) {
-                    highest = hourglass
-                    biggest = [i,j]
-                } // end of if statement
-        } // end of innder loop
-    } // outside of whole loop
-    return `The largest sum is ${highest} originating at the point ${biggest}`
+    if (length > 2 && width > 2) {
+      let highest = 0
+      let biggest = [0,0]
+      
+      for (i = 1; i < length; i++) {
+          for (j = 1; j < width; j++) {
+              hourglass = 
+              arr[i-1][j-1]+arr[i-1][j]+arr[i-1][j+1]
+                          +arr[i][j]+
+              arr[i+1][j-1]+arr[i+1][j]+arr[i+1][j+1]
+                  if (hourglass > highest) {
+                      highest = hourglass
+                      biggest = [i,j]
+                  } // End of if statement
+          } // End of innder loop
+      } // Outside of whole loop
+      return `The largest sum is ${highest} originating at the point ${biggest}`
+    } else {
+      return "There are no hourglass'"
+    }
 }
-
-biggestHourglass(arr)
